@@ -8,11 +8,16 @@ import styles from "./FlightsList.module.css";
 function FlightsList() {
 	//states
 	const [flights, setFlights] = useState("");
+	const [direct, setDirect] = useState(false);
 
 	//useful constants
 	const partner = "data4youcbp202106";
 	const url = (departure, destination, partner) => {
-		return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}`
+		if (direct) {
+			return (`https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&max_stopovers=0`)
+		} else {
+		return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}`;
+		}
 	};
 
 	useEffect(() => {
@@ -25,6 +30,7 @@ function FlightsList() {
 		const data = await request.json();
 		if (!data) console.error("data could not be fetched");
 		data && setFlights(data);
+		console.log(data);
 	};
 
 	//todo try try...catch...finally
@@ -33,9 +39,9 @@ function FlightsList() {
 	} else {
 		return (
 			<>
-				<SearchFlights fetchFlights={fetchFlights}/>			
+				<SearchFlights fetchFlights={fetchFlights} direct={direct} setDirect={setDirect}/>			
 				<div className={styles.flights__container}>
-					{flights.data !== [] ?
+					{flights.data != [] ?
 					flights.data.map((flight) => {
 						return (
 							<div key={flight.id}>
@@ -43,7 +49,8 @@ function FlightsList() {
 							</div>
 						);
 					}) :
-					null}
+					<p>No flights available.</p>
+					}
 				</div>
 			</>
 		);

@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import DestinationDropdown from "./DestinationDropdown";
 import DepartureDropdown from "./DepartureDropdown";
 import SearchButton from "./SearchButton";
-import Checkboxes from "./Checkboxes";
 import SearchButton2 from "./SearchButton2";
 import DestinationField from "./DestinationField";
+import Checkbox from "./Checkbox";
 
-function SearchFlights({fetchFlights}) {
+function SearchFlights({fetchFlights, direct, setDirect}) {
 
     //states
     const [destination, setDestination] = useState("VLC");
@@ -42,7 +42,7 @@ function SearchFlights({fetchFlights}) {
         <>
             <DepartureDropdown placeOfDeparture={placeOfDeparture} departure={departure} setDeparture={setDeparture} /> 
             <DestinationDropdown destinations={destinations} destination={destination} setDestination={setDestination} />
-            <Checkboxes />
+            <Checkbox setDirect={setDirect} direct={direct} />
             <SearchButton handleClick={handleClick}/>
             <DestinationField customDestination={customDestination} setCustomDestination={setCustomDestination}/>
             <SearchButton2 fetchingCustomDestination={fetchingCustomDestination} customDestination={customDestination}/>
