@@ -5,39 +5,66 @@ import DepartureDropdown from "./DepartureDropdown";
 import SearchButton from "./SearchButton";
 import SearchButton2 from "./SearchButton2";
 import DestinationField from "./DestinationField";
+<<<<<<< HEAD
 import Checkbox from "./Checkbox";
 
 function SearchFlights({fetchFlights, direct, setDirect}) {
+=======
+import Loader from "./Loader";
 
-    //states
-    const [destination, setDestination] = useState("VLC");
-	const [departure, setDeparture] = useState("PRG");
-    const [customDestination, setCustomDestination] = useState("");
-    const [search, setSearch] = useState([departure, destination]);
+function SearchFlights({
+	fetchFlights,
+	destination,
+	setDestination,
+	departure,
+	setDeparture,
+	setResults,
+}) {
+	//states
+	const [search, setSearch] = useState([departure, destination]);
+>>>>>>> feature/pagination
 
-    //useful constants
-    const destinations = [{name : "Valencia", iata : "VLC"}, {name : "Barcelona", iata : "BCN"}, {name : "Madrid", iata : "MAD"}, {name : "Milan", iata : "MIL"}, {name : "Athens", iata : "ATH"}];
-	const placeOfDeparture = [{name : "Prague", iata : "PRG"}, {name : "Berlin", iata : "BER"}, , {name : "Warsaw", iata : "WAW"}, {name : "Pardubice", iata : "PED"}];
+	//useful constants
+	const destinations = [
+		{ name: "Valencia", iata: "VLC" },
+		{ name: "Barcelona", iata: "BCN" },
+		{ name: "Madrid", iata: "MAD" },
+		{ name: "Milan", iata: "MIL" },
+		{ name: "Athens", iata: "ATH" },
+	];
+	const placeOfDeparture = [
+		{ name: "Prague", iata: "PRG" },
+		{ name: "Berlin", iata: "BER" },
+		{ name: "Warsaw", iata: "WAW" },
+		{ name: "Pardubice", iata: "PED" },
+	];
+	//states
 
-    //fetching the custom destination
-    const fetchingCustomDestination = async (city) => {
-        const response = await fetch(`https://api.skypicker.com/locations?term=${city}&location_types=airport`);
-        const data = await response.json();
+	const [customDestination, setCustomDestination] = useState("");
 
-        console.log(data.locations[0].code);
+	//saving destination and place of departure into a search variable
+	const handleClick = () => {
+		setSearch([departure, destination]);
+		setResults(10);
+	};
 
-        data && setSearch([departure, data.locations[0].code]);
-    }
+	//fetching the custom destination
+	const fetchingCustomDestination = async (city) => {
+		const response = await fetch(
+			`https://api.skypicker.com/locations?term=${city}&location_types=airport`
+		);
+		const data = await response.json();
 
-    //saving destination and place of departure into a search variable
-    const handleClick = () => {
-        setSearch([departure, destination]);        
-    }
+		console.log(data.locations[0].code);
 
-    useEffect(() => {
-        fetchFlights(search[0], search[1]);
-    }, [search]);
+		data && setSearch([departure, data.locations[0].code]);
+	};
 
+	useEffect(() => {
+		fetchFlights(search[0], search[1]);
+	}, [search]);
+
+<<<<<<< HEAD
     return (
         <>
             <DepartureDropdown placeOfDeparture={placeOfDeparture} departure={departure} setDeparture={setDeparture} /> 
@@ -48,6 +75,33 @@ function SearchFlights({fetchFlights, direct, setDirect}) {
             <SearchButton2 fetchingCustomDestination={fetchingCustomDestination} customDestination={customDestination}/>
         </>
     );
+=======
+	return (
+		<>
+			<DepartureDropdown
+				placeOfDeparture={placeOfDeparture}
+				departure={departure}
+				setDeparture={setDeparture}
+			/>
+			<DestinationDropdown
+				destinations={destinations}
+				destination={destination}
+				setDestination={setDestination}
+			/>
+			<Checkboxes />
+			<SearchButton handleClick={handleClick} />
+			<DestinationField
+				customDestination={customDestination}
+				setCustomDestination={setCustomDestination}
+			/>
+			<SearchButton2
+				fetchingCustomDestination={fetchingCustomDestination}
+				customDestination={customDestination}
+				setResults={setResults}
+			/>
+		</>
+	);
+>>>>>>> feature/pagination
 }
 
 export default SearchFlights;

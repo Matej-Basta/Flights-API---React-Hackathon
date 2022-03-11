@@ -1,11 +1,18 @@
-.book__flight_button {
+.more__flights {
+	display: flex;
+	justify-content: center;
+	margin: 2rem;
+}
+
+.more__flights_button {
 	align-items: center;
-	background-color: #ffffff;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+	background-clip: padding-box;
+	background-color: #fa6400;
+	border: 1px solid transparent;
 	border-radius: 0.25rem;
 	box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
 	box-sizing: border-box;
-	color: rgba(0, 0, 0, 0.85);
+	color: #fff;
 	cursor: pointer;
 	display: inline-flex;
 	font-family: system-ui, -apple-system, system-ui, "Helvetica Neue",
@@ -27,21 +34,18 @@
 	width: auto;
 }
 
-.book__flight_button:hover,
-.book__flight_button:focus {
-	border-color: rgba(0, 0, 0, 0.15);
+.more__flights_button:hover,
+.more__flights_button:focus {
+	background-color: #fb8332;
 	box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-	color: rgba(0, 0, 0, 0.65);
 }
 
-.book__flight_button:hover {
+.more__flights_button:hover {
 	transform: translateY(-1px);
 }
 
-.book__flight_button:active {
-	background-color: #f0f0f1;
-	border-color: rgba(0, 0, 0, 0.15);
+.more__flights_button:active {
+	background-color: #c85000;
 	box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-	color: rgba(0, 0, 0, 0.65);
 	transform: translateY(0);
 }

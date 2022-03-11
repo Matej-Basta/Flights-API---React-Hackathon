@@ -1,7 +1,8 @@
-import "./Loader.module.css";
+import styles from "./Loader.module.css";
+import loadersvg from "../loader.svg";
 
 function Loader() {
-	return <div>loading</div>;
+	return <img src={loadersvg} className={styles.loadersvg} alt="logo" />;
 }
 
 export default Loader;

@@ -4,7 +4,7 @@ import styles from "./FlightDetails.module.css";
 
 function FlightDetails({ flight }) {
 	return (
-		<Card className={styles.flight__container}>
+		<Card>
 			<div>
 				<div>Departing from:</div>
 				<div>{flight.cityFrom}</div>
@@ -28,11 +28,11 @@ function FlightDetails({ flight }) {
 				<div>{flight.price}€</div>{" "}
 				{/* Conversion euro make it dynamic to other currencies */}
 			</div>
-            <div>
-                <button>
-                    Book this flight
-                </button>
-            </div>
+			<div>
+				<button className={styles.book__flight_button}>
+					Book this flight
+				</button>
+			</div>
 		</Card>
 	);
 }
