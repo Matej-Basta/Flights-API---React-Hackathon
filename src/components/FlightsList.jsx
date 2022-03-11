@@ -9,26 +9,19 @@ import styles from "./FlightsList.module.css";
 function FlightsList() {
 	//states
 	const [flights, setFlights] = useState("");
-<<<<<<< HEAD
 	const [direct, setDirect] = useState(false);
-=======
 	const [results, setResults] = useState(10);
 	const [destination, setDestination] = useState("VLC");
 	const [departure, setDeparture] = useState("PRG");
->>>>>>> feature/pagination
 
 	//useful constants
 	const partner = "data4youcbp202106";
 	const url = (departure, destination, partner) => {
-<<<<<<< HEAD
 		if (direct) {
-			return (`https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&max_stopovers=0`)
+			return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&max_stopovers=0`;
 		} else {
-		return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}`;
+			return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}`;
 		}
-=======
-		return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&limit=${results}`;
->>>>>>> feature/pagination
 	};
 
 	useEffect(() => {
@@ -50,20 +43,6 @@ function FlightsList() {
 	} else {
 		return (
 			<>
-<<<<<<< HEAD
-				<SearchFlights fetchFlights={fetchFlights} direct={direct} setDirect={setDirect}/>			
-				<div className={styles.flights__container}>
-					{flights.data != [] ?
-					flights.data.map((flight) => {
-						return (
-							<div key={flight.id}>
-								<FlightDetails flight={flight} />
-							</div>
-						);
-					}) :
-					<p>No flights available.</p>
-					}
-=======
 				<SearchFlights
 					fetchFlights={fetchFlights}
 					destination={destination}
@@ -71,6 +50,8 @@ function FlightsList() {
 					departure={departure}
 					setDeparture={setDeparture}
 					setResults={setResults}
+					direct={direct}
+					setDirect={setDirect}
 				/>
 				<div>Displaying {flights.data.length} flights</div>
 
@@ -84,7 +65,6 @@ function FlightsList() {
 								);
 						  })
 						: null}
->>>>>>> feature/pagination
 				</div>
 				<MoreFlights
 					setResults={setResults}

@@ -5,12 +5,8 @@ import DepartureDropdown from "./DepartureDropdown";
 import SearchButton from "./SearchButton";
 import SearchButton2 from "./SearchButton2";
 import DestinationField from "./DestinationField";
-<<<<<<< HEAD
-import Checkbox from "./Checkbox";
-
-function SearchFlights({fetchFlights, direct, setDirect}) {
-=======
 import Loader from "./Loader";
+import Checkbox from "./Checkbox";
 
 function SearchFlights({
 	fetchFlights,
@@ -19,10 +15,11 @@ function SearchFlights({
 	departure,
 	setDeparture,
 	setResults,
+	direct,
+	setDirect,
 }) {
 	//states
 	const [search, setSearch] = useState([departure, destination]);
->>>>>>> feature/pagination
 
 	//useful constants
 	const destinations = [
@@ -64,18 +61,6 @@ function SearchFlights({
 		fetchFlights(search[0], search[1]);
 	}, [search]);
 
-<<<<<<< HEAD
-    return (
-        <>
-            <DepartureDropdown placeOfDeparture={placeOfDeparture} departure={departure} setDeparture={setDeparture} /> 
-            <DestinationDropdown destinations={destinations} destination={destination} setDestination={setDestination} />
-            <Checkbox setDirect={setDirect} direct={direct} />
-            <SearchButton handleClick={handleClick}/>
-            <DestinationField customDestination={customDestination} setCustomDestination={setCustomDestination}/>
-            <SearchButton2 fetchingCustomDestination={fetchingCustomDestination} customDestination={customDestination}/>
-        </>
-    );
-=======
 	return (
 		<>
 			<DepartureDropdown
@@ -88,7 +73,7 @@ function SearchFlights({
 				destination={destination}
 				setDestination={setDestination}
 			/>
-			<Checkboxes />
+			<Checkbox setDirect={setDirect} direct={direct} />
 			<SearchButton handleClick={handleClick} />
 			<DestinationField
 				customDestination={customDestination}
@@ -101,7 +86,6 @@ function SearchFlights({
 			/>
 		</>
 	);
->>>>>>> feature/pagination
 }
 
 export default SearchFlights;
