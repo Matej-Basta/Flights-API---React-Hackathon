@@ -1,5 +1,5 @@
-function SearchButton2({fetchingCustomDestination}) {
-    return <button onClick={() => fetchingCustomDestination("lisbon")}>Search</button>;
+function SearchButton2({fetchingCustomDestination, customDestination}) {
+    return <button onClick={() => fetchingCustomDestination(customDestination)}>Search</button>;
 }
 
 export default SearchButton2;

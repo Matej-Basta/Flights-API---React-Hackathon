@@ -24,6 +24,8 @@ function SearchFlights({fetchFlights}) {
         const data = await response.json();
 
         console.log(data.locations[0].code);
+
+        data && setSearch([departure, data.locations[0].code]);
     }
 
     //saving destination and place of departure into a search variable
@@ -42,7 +44,7 @@ function SearchFlights({fetchFlights}) {
             <SearchButton handleClick={handleClick}/>
 
             <DestinationField customDestination={customDestination} setCustomDestination={setCustomDestination}/>
-            <SearchButton2 fetchingCustomDestination={fetchingCustomDestination}/>
+            <SearchButton2 fetchingCustomDestination={fetchingCustomDestination} customDestination={customDestination}/>
         </>
     );
 }
