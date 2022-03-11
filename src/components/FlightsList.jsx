@@ -43,6 +43,7 @@ function FlightsList() {
 					setDestination={setDestination}
 					departure={departure}
 					setDeparture={setDeparture}
+					setResults={setResults}
 				/>
 				<div>Displaying {flights.data.length} flights</div>
 
@@ -59,6 +60,8 @@ function FlightsList() {
 					setResults={setResults}
 					results={results}
 					flights={flights}
+					departure={departure}
+					destination={destination}
 				/>
 			</>
 		);

@@ -10,6 +10,7 @@ function SearchFlights({
 	setDestination,
 	departure,
 	setDeparture,
+	setResults,
 }) {
 	//states
 	// const [destination, setDestination] = useState("VLC");
@@ -34,6 +35,7 @@ function SearchFlights({
 	//saving destination and place of departure into a search variable
 	const handleClick = () => {
 		setSearch([departure, destination]);
+		setResults(10);
 	};
 
 	useEffect(() => {
