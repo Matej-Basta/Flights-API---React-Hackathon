@@ -6,6 +6,7 @@ import SearchButton from "./SearchButton";
 import Checkboxes from "./Checkboxes";
 import SearchButton2 from "./SearchButton2";
 import DestinationField from "./DestinationField";
+import Loader from "./Loader";
 
 function SearchFlights({
 	fetchFlights,
@@ -79,6 +80,7 @@ function SearchFlights({
 			<SearchButton2
 				fetchingCustomDestination={fetchingCustomDestination}
 				customDestination={customDestination}
+				setResults={setResults}
 			/>
 		</>
 	);

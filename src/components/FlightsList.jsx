@@ -48,15 +48,15 @@ function FlightsList() {
 				<div>Displaying {flights.data.length} flights</div>
 
 				<div className={styles.flights__container}>
-					{flights.data !== [] ?
-					flights.data.map((flight) => {
-						return (
-							<div key={flight.id}>
-								<FlightDetails flight={flight} />
-							</div>
-						);
-					}) :
-					null}
+					{flights.data !== []
+						? flights.data.map((flight) => {
+								return (
+									<div key={flight.id}>
+										<FlightDetails flight={flight} />
+									</div>
+								);
+						  })
+						: null}
 				</div>
 				<MoreFlights
 					setResults={setResults}
