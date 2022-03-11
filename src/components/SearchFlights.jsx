@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import DestinationDropdown from "./DestinationDropdown";
 import DepartureDropdown from "./DepartureDropdown";
 import SearchButton from "./SearchButton";
+import Checkboxes from "./Checkboxes";
+import SearchButton2 from "./SearchButton2";
+import DestinationField from "./DestinationField";
 
 function SearchFlights({
 	fetchFlights,
@@ -13,8 +16,6 @@ function SearchFlights({
 	setResults,
 }) {
 	//states
-	// const [destination, setDestination] = useState("VLC");
-	// const [departure, setDeparture] = useState("PRG");
 	const [search, setSearch] = useState([departure, destination]);
 
 	//useful constants
@@ -31,11 +32,26 @@ function SearchFlights({
 		{ name: "Warsaw", iata: "WAW" },
 		{ name: "Pardubice", iata: "PED" },
 	];
+	//states
+
+	const [customDestination, setCustomDestination] = useState("");
 
 	//saving destination and place of departure into a search variable
 	const handleClick = () => {
 		setSearch([departure, destination]);
 		setResults(10);
+	};
+
+	//fetching the custom destination
+	const fetchingCustomDestination = async (city) => {
+		const response = await fetch(
+			`https://api.skypicker.com/locations?term=${city}&location_types=airport`
+		);
+		const data = await response.json();
+
+		console.log(data.locations[0].code);
+
+		data && setSearch([departure, data.locations[0].code]);
 	};
 
 	useEffect(() => {
@@ -54,7 +70,16 @@ function SearchFlights({
 				destination={destination}
 				setDestination={setDestination}
 			/>
+			<Checkboxes />
 			<SearchButton handleClick={handleClick} />
+			<DestinationField
+				customDestination={customDestination}
+				setCustomDestination={setCustomDestination}
+			/>
+			<SearchButton2
+				fetchingCustomDestination={fetchingCustomDestination}
+				customDestination={customDestination}
+			/>
 		</>
 	);
 }
