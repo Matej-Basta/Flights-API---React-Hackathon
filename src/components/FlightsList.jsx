@@ -18,9 +18,9 @@ function FlightsList() {
 	const partner = "data4youcbp202106";
 	const url = (departure, destination, partner) => {
 		if (direct) {
-			return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&max_stopovers=0`;
+			return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&max_stopovers=0&limit=${results}`;
 		} else {
-			return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}`;
+			return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&limit=${results}`;
 		}
 	};
 
