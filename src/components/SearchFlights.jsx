@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import DestinationDropdown from "./DestinationDropdown";
 import DepartureDropdown from "./DepartureDropdown";
 import SearchButton from "./SearchButton";
+import Checkboxes from "./Checkboxes";
 
 function SearchFlights() {
 
@@ -18,6 +19,7 @@ function SearchFlights() {
         <>
             <DepartureDropdown placeOfDeparture={placeOfDeparture} departure={departure} setDeparture={setDeparture} /> 
             <DestinationDropdown destinations={destinations} destination={destination} setDestination={setDestination} />
+            <Checkboxes />
             <SearchButton />
         </>
     );
