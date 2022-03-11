@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 //custom components
 import FlightDetails from "./FlightDetails";
 import SearchFlights from "./SearchFlights";
+import Loader from "./Loader";
+import styles from "./FlightsList.module.css";
 
 function FlightsList() {
 	//states
@@ -24,22 +26,22 @@ function FlightsList() {
 
 	//todo try try...catch...finally
 	if (!flights) {
-		return <div>loading</div>;
+		return <Loader />;
 	} else {
 		return (
-
 			<>
-				<SearchFlights />
-				
-
-				{flights.data.map((flight) => {
-					return (
+				<SearchFlights />			
+				<div className={styles.flights__container}>
+					{flights.data.map((flight) => {
+						return (
 							<div key={flight.id}>
-								{/* <FlightDetails flight={flight} /> */}
+								<FlightDetails flight={flight} />
 							</div>
-					);
-				})}
-			</>)
+						);
+					})}
+				</div>
+			</>
+		);
 	}
 }
 
