@@ -5,8 +5,8 @@ import DepartureDropdown from "./DepartureDropdown";
 import SearchButton from "./SearchButton";
 import SearchButton2 from "./SearchButton2";
 import DestinationField from "./DestinationField";
-import Loader from "./Loader";
 import Checkbox from "./Checkbox";
+import styles from "./SearchFlights.module.css";
 
 function SearchFlights({
 	fetchFlights,
@@ -62,7 +62,8 @@ function SearchFlights({
 	}, [search]);
 
 	return (
-		<>
+		<div className={styles.container}>
+			<span className={styles.logo}>🛫</span>
 			<DepartureDropdown
 				placeOfDeparture={placeOfDeparture}
 				departure={departure}
@@ -84,7 +85,7 @@ function SearchFlights({
 				customDestination={customDestination}
 				setResults={setResults}
 			/>
-		</>
+		</div>
 	);
 }
 
