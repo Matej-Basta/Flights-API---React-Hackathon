@@ -4,12 +4,15 @@ import "./App.css";
 import FlightsList from "./components/FlightsList";
 
 function App() {
+
 	return (
+	<>
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<FlightsList />} />
 			</Routes>
 		</BrowserRouter>
+	</>	
 	);
 }
 
