@@ -1,13 +1,13 @@
 .card {
 	display: flex;
-	flex-direction: column;
-	background-color: cornsilk;
+	flex-direction: row;
+	justify-content: space-evenly;
 	padding: 10px;
-	border-radius: 15px;
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	width: 100%;
 	transition: all ease-in-out 0.3s;
 }
 
 .card:hover {
-	background-color: rgb(224, 255, 220);
+	background-color: rgba(224, 255, 220, 0.678);
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

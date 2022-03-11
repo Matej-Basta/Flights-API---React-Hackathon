@@ -10,18 +10,24 @@ function FlightDetails({ flight }) {
 				<div>{flight.cityFrom}</div>
 			</div>
 			<div>
-				<div>To:</div>
-				<div>{flight.cityTo}</div>
-			</div>
-			<div>
-				<div>Flight Duration:</div>
-				<div>{flight.fly_duration}</div>
-			</div>
-			<div>
 				<div>Departure Time:</div>
 				<div>
 					{DateTime.fromMillis(flight.dTime * 1000).toFormat("hh:mm")}
 				</div>
+			</div>
+			<div>
+				<div>To:</div>
+				<div>{flight.cityTo}</div>
+			</div>
+			<div>
+				<div>Arrival Time:</div>
+				<div>
+					{DateTime.fromMillis(flight.aTime * 1000).toFormat("hh:mm")}
+				</div>
+			</div>
+			<div>
+				<div>Flight Duration:</div>
+				<div>{flight.fly_duration}</div>
 			</div>
 			<div>
 				<div>Price:</div>

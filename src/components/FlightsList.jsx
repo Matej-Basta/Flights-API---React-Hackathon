@@ -52,6 +52,7 @@ function FlightsList() {
 					setResults={setResults}
 					direct={direct}
 					setDirect={setDirect}
+					setFlights={setFlights}
 				/>
 				<div>Displaying {flights.data.length} flights</div>
 

@@ -17,6 +17,7 @@ function SearchFlights({
 	setResults,
 	direct,
 	setDirect,
+	setFlights,
 }) {
 	//states
 	const [search, setSearch] = useState([departure, destination]);
