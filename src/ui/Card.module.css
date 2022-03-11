@@ -1,0 +1,13 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	background-color: cornsilk;
+	padding: 10px;
+	border-radius: 15px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	transition: all ease-in-out 0.3s;
+}
+
+.card:hover {
+	background-color: rgb(224, 255, 220);
+}
