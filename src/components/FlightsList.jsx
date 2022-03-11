@@ -11,14 +11,17 @@ function FlightsList() {
 
 	//useful constants
 	const partner = "data4youcbp202106";
-	const url = `https://api.skypicker.com/flights?fly_from=PRG&fly_to=VLC&partner=${partner}`;
+	const url = (departure, destination, partner) => {
+		return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}`
+	};
 
 	useEffect(() => {
 		fetchFlights();
 	}, []);
 
-	const fetchFlights = async () => {
-		const request = await fetch(url);
+	//fetchingflights
+	const fetchFlights = async (departure = "PRG", destination = "VLC") => {
+		const request = await fetch(url(departure, destination, partner));
 		const data = await request.json();
 		if (!data) console.error("data could not be fetched");
 		data && setFlights(data);
@@ -30,15 +33,17 @@ function FlightsList() {
 	} else {
 		return (
 			<>
-				<SearchFlights />			
+				<SearchFlights fetchFlights={fetchFlights}/>			
 				<div className={styles.flights__container}>
-					{flights.data.map((flight) => {
+					{flights.data !== [] ?
+					flights.data.map((flight) => {
 						return (
 							<div key={flight.id}>
 								<FlightDetails flight={flight} />
 							</div>
 						);
-					})}
+					}) :
+					null}
 				</div>
 			</>
 		);
