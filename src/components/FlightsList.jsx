@@ -35,13 +35,15 @@ function FlightsList() {
 			<>
 				<SearchFlights fetchFlights={fetchFlights}/>			
 				<div className={styles.flights__container}>
-					{flights.data.map((flight) => {
+					{flights.data !== [] ?
+					flights.data.map((flight) => {
 						return (
 							<div key={flight.id}>
 								<FlightDetails flight={flight} />
 							</div>
 						);
-					})}
+					}) :
+					null}
 				</div>
 			</>
 		);
