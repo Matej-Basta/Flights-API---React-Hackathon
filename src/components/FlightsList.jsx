@@ -38,7 +38,6 @@ function FlightsList() {
 					{flights.data.map((flight, i) => {
 						return (
 							<div key={flight.id}>
-								{i}
 								<FlightDetails flight={flight} />
 							</div>
 						);
