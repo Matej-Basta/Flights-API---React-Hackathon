@@ -12,7 +12,7 @@ function SearchFlights({fetchFlights}) {
     const [search, setSearch] = useState([departure, destination]);
 
     //useful constants
-    const destinations = [{name : "Valencia", iata : "VLC"}, {name : "Barcelona", iata : "BCN"}, {name : "Madrid", iata : "MAD"}, {name : "Milano", iata : "MIL"}, {name : "Athens", iata : "ATH"}];
+    const destinations = [{name : "Valencia", iata : "VLC"}, {name : "Barcelona", iata : "BCN"}, {name : "Madrid", iata : "MAD"}, {name : "Milan", iata : "MIL"}, {name : "Athens", iata : "ATH"}];
 	const placeOfDeparture = [{name : "Prague", iata : "PRG"}, {name : "Berlin", iata : "BER"}, , {name : "Warsaw", iata : "WAW"}, {name : "Pardubice", iata : "PED"}];
 
     //saving destination and place of departure into a search variable
