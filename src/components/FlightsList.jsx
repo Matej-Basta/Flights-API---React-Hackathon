@@ -10,17 +10,22 @@ function FlightsList() {
 	//states
 	const [flights, setFlights] = useState("");
 	const [results, setResults] = useState(10);
+	const [destination, setDestination] = useState("VLC");
+	const [departure, setDeparture] = useState("PRG");
 
 	//useful constants
 	const partner = "data4youcbp202106";
-	const url = `https://api.skypicker.com/flights?fly_from=PRG&fly_to=VLC&partner=${partner}&limit=${results}`;
+	const url = (departure, destination, partner) => {
+		return `https://api.skypicker.com/flights?fly_from=${departure}&fly_to=${destination}&partner=${partner}&limit=${results}`;
+	};
 
 	useEffect(() => {
-		fetchFlights();
+		fetchFlights(departure, destination);
 	}, [results]);
 
-	const fetchFlights = async () => {
-		const request = await fetch(url);
+	//fetchingflights
+	const fetchFlights = async (departure, destination) => {
+		const request = await fetch(url(departure, destination, partner));
 		const data = await request.json();
 		if (!data) console.error("data could not be fetched");
 		data && setFlights(data);
@@ -32,8 +37,15 @@ function FlightsList() {
 	} else {
 		return (
 			<>
-				<SearchFlights />
+				<SearchFlights
+					fetchFlights={fetchFlights}
+					destination={destination}
+					setDestination={setDestination}
+					departure={departure}
+					setDeparture={setDeparture}
+				/>
 				<div>Displaying {flights.data.length} flights</div>
+
 				<div className={styles.flights__container}>
 					{flights.data.map((flight, i) => {
 						return (

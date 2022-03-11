@@ -4,7 +4,7 @@ function DestinationDropdown({destinations, destination, setDestination}) {
             <label htmlFor="destination">Destination: </label>
             <select name="destination" value={destination} onChange={(e) =>  setDestination(e.target.value)}>
                 {destinations.map((city, index) => (
-                    <option key={index} value={city.toLowerCase()}>{city}</option>
+                    <option key={index} value={city.iata}>{city.name}</option>
                 ))}
             </select>
         </>
